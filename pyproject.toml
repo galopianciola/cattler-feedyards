@@ -1,0 +1,34 @@
+[project]
+name = "cattler-feedyards"
+requires-python = ">=3.14"
+
+[tool.ruff]
+line-length = 88          # estándar Black; 100 si preferís más ancho
+target-version = "py314"
+src = ["api", "core"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (orden de imports)
+    "N",   # pep8-naming
+    "UP",  # pyupgrade (sintaxis moderna)
+    "B",   # flake8-bugbear (bugs comunes)
+    "DJ",  # flake8-django
+    "SIM", # simplificaciones
+]
+ignore = [
+    "E501",  # line length lo maneja el formatter, no el linter
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/migrations/*.py" = ["E501"]
+"**/settings.py" = ["F401"]  # imports usados en INSTALLED_APPS, etc.
+
+[tool.ruff.lint.isort]
+known-first-party = ["api", "core"]
+
+[tool.ruff.format]
+quote-style = "double"
