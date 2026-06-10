@@ -1,4 +1,3 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
@@ -8,20 +7,10 @@ from api.exceptions import ConflictValidationError
 from api.services.lot_creation import create_lot_with_animals
 
 
-def validate_greater_than_zero(value):
-    if value <= 0:
-        raise serializers.ValidationError(
-            "Value must be greater than zero",
-        )
-    return value
-
-
 class LotSerializer(serializers.Serializer):
-    quantity = serializers.IntegerField(validators=[MinValueValidator(1)])
-    entry_date = serializers.DateField(
-        validators=[MaxValueValidator(timezone.localdate())]
-    )
-    average_weight = serializers.FloatField(validators=[validate_greater_than_zero])
+    quantity = serializers.IntegerField()
+    entry_date = serializers.DateField()
+    average_weight = serializers.FloatField()
 
     def validate_quantity(self, value):
         if value < MIN_ANIMALS_PER_LOT:
