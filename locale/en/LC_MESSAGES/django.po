@@ -1,0 +1,29 @@
+msgid "Entry date cannot be in the future."
+msgstr "Entry date cannot be in the future."
+
+msgid "Animal quantity must be greater than or equal to %(min_quantity)s."
+msgstr "Animal quantity must be greater than or equal to %(min_quantity)s."
+
+msgid "Lot average weight must be greater than %(min_weight)s."
+msgstr "Lot average weight must be greater than %(min_weight)s."
+
+msgid "From date cannot be in the future."
+msgstr "From date cannot be in the future."
+
+msgid "From date must be greater than or equal to the entry date."
+msgstr "From date must be greater than or equal to the entry date."
+
+msgid "Start date cannot be in the future."
+msgstr "Start date cannot be in the future."
+
+msgid "End date cannot be in the future."
+msgstr "End date cannot be in the future."
+
+msgid "Start date must be less than or equal to end date."
+msgstr "Start date must be less than or equal to end date."
+
+msgid "Start date and end date must be different."
+msgstr "Start date and end date must be different."
+
+msgid "Start date must be greater than or equal to the entry date."
+msgstr "Start date must be greater than or equal to the entry date."
