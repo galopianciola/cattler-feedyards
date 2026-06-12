@@ -1,0 +1,36 @@
+info:
+  name: create lots
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/api/lots/"
+  headers:
+    - name: Authorization
+      value: Token {{AUTH_TOKEN}}
+  body:
+    type: json
+    data: |-
+      {
+        "quantity": 10,
+        "entry_date": "2026-06-02",
+        "average_weight": 350.5
+      }
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: 'bru.setEnvVar("LOT_ID", String(res.body.id), { persist: true });'
+        method: jsonq
+      variable:
+        name: LOT_ID
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

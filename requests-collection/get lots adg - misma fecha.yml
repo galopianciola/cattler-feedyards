@@ -1,0 +1,39 @@
+info:
+  name: get lots adg - misma fecha
+  type: http
+  seq: 13
+
+http:
+  method: GET
+  url: "{{BASE_URL}}/api/lots/{{LOT_ID}}/adg/?start_date=2026-06-05&end_date=2026-06-05"
+  headers:
+    - name: Authorization
+      value: Token {{AUTH_TOKEN}}
+  params:
+    - name: start_date
+      value: 2026-06-05
+      type: query
+    - name: end_date
+      value: 2026-06-05
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: bru.setEnvVar("AUTH_TOKEN", res.body.token)
+        method: jsonq
+      variable:
+        name: AUTH_TOKEN
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,33 @@
+info:
+  name: auth token
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{BASE_URL}}/api/auth/token/"
+  body:
+    type: json
+    data: |-
+      {
+        "username": "galo",
+        "password": "jojojo04"
+      }
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: bru.setEnvVar("AUTH_TOKEN", res.body.token)
+        method: jsonq
+      variable:
+        name: AUTH_TOKEN
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

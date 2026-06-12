@@ -1,0 +1,6 @@
+name: local
+variables:
+  - name: BASE_URL
+    value: http://localhost:8000
+  - name: LOT_ID
+    value: "17"
