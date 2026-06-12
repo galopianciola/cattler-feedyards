@@ -56,7 +56,7 @@ class WeightRecord(models.Model):
         verbose_name_plural = "Weight Records"
 
     def __str__(self):
-        return f"{self.animal.name} - {self.date}"
+        return f"{self.animal.lot.name} - {self.date} ({self.weight} kg)"
 
 
 class User(AbstractUser):
@@ -73,7 +73,7 @@ class User(AbstractUser):
     )
 
     def __str__(self):
-        return self.get_full_name()
+        return self.get_full_name() or self.username
 
     class Meta:
         verbose_name = "User"
