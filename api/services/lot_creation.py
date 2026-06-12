@@ -1,6 +1,7 @@
 from datetime import date, timedelta
 
 from django.db import transaction
+from django.utils import timezone
 
 from api.models import Animal, Feedyard, Lot, WeightRecord
 
@@ -23,7 +24,7 @@ def create_lot_with_animals(
     ]
     Animal.objects.bulk_create(animals, batch_size=5000)
 
-    days_from_entry_date = (date.today() - entry_date).days
+    days_from_entry_date = (timezone.localdate() - entry_date).days
     dates = [entry_date + timedelta(days=d) for d in range(days_from_entry_date + 1)]
 
     weight_records = [
