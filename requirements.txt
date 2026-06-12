@@ -1,0 +1,6 @@
+djangorestframework==3.17.1
+Django==6.0.6
+ruff==0.15.16
+pre_commit==4.6.0
+pytest==9.0.3
+pytest-django==4.12.0

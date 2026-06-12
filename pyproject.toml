@@ -32,3 +32,7 @@ known-first-party = ["api", "core"]
 
 [tool.ruff.format]
 quote-style = "double"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "lotmanagement.settings"
+python_files = ["test_*.py", "tests.py"]
